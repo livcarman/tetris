@@ -1,4 +1,4 @@
-import getRandomTetromino from "./getRandomTetromino";
+import getRandomTetromino from "../getRandomTetromino";
 
 describe("getRandomTetromino()", () => {
   it("returns a valid tetromino index", () => {

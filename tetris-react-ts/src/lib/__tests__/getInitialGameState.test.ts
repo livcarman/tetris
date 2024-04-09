@@ -1,4 +1,4 @@
-import getInitialGameState from "./getInitialGameState";
+import getInitialGameState from "../getInitialGameState";
 
 describe("getInitialGameState()", () => {
   it("initializes the board to an empty 10x18 board", () => {

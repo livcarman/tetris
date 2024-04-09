@@ -1,5 +1,5 @@
 export type GameState = {
-  board: Array<Array<number>>;
+  board: number[][];
   tetromino: number;
   rotation: number;
   x: number;

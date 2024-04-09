@@ -1,4 +1,4 @@
-import getNewBoard from "./getNewBoard";
+import getNewBoard from "../getNewBoard";
 
 describe("getNewBoard()", () => {
   it("returns a 10x18 grid of zeroes", () => {
