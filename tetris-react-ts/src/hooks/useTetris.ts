@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useReducer, useRef } from "react";
+import { useCallback, useEffect, useReducer, useRef } from "react";
 
 import { GameState } from "../lib/types";
 import togglePause from "../lib/togglePause";
@@ -72,6 +72,7 @@ const useKeyboardControls = (controls: TetrisControls) => {
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 };
 
