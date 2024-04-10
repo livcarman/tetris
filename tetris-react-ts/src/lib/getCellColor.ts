@@ -5,7 +5,7 @@ const getCellColor = (
   gameState: GameState,
   cellColor: number,
   row: number,
-  col: number
+  col: number,
 ) => {
   const { x, y, tetromino, rotation } = gameState;
 

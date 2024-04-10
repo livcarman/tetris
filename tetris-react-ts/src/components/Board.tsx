@@ -14,7 +14,7 @@ const Board = () => {
           const key = `${row}${col}`;
           const color = getCellColor(gameState, cellColor, row, col);
           return <Cell color={color} key={key} x={col} y={row} />;
-        })
+        }),
       )}
     </div>
   );

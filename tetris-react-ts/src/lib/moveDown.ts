@@ -21,7 +21,7 @@ const moveDown = (gameState: GameState): GameState => {
 
   // If it's not a game over, check to see if we completed any rows
   const proposedGameStateWithScore = checkForLineClears(
-    proposedGameStateWithBlock
+    proposedGameStateWithBlock,
   );
 
   // Finally, get ready to drop a new block
