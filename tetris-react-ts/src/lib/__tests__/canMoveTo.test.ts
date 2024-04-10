@@ -25,7 +25,7 @@ describe("canMoveTo()", () => {
 
   it("returns false when the tetromino is in an occupied cell", () => {
     const board = getNewBoard();
-    board[3] = Array(10).fill(1);
+    board[3] = Array(10).fill(1) as number[];
 
     const gameState = {
       ...getInitialGameState(),

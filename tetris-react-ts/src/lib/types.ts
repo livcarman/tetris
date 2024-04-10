@@ -7,6 +7,7 @@ export type GameState = {
   nextTetromino: number;
   score: number;
   level: number;
+  lineClears: number;
   isPaused: boolean;
   isGameOver: boolean;
 };

@@ -8,6 +8,7 @@ const getInitialGameState = (): GameState => ({
   isGameOver: false,
   score: 0,
   level: 1,
+  lineClears: 0,
   tetromino: getRandomTetromino(),
   nextTetromino: getRandomTetromino(),
   rotation: 0,

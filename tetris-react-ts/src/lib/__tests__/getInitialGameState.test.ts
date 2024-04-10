@@ -28,6 +28,11 @@ describe("getInitialGameState()", () => {
     expect(level).toBe(1);
   });
 
+  it("initializes the line clears to 0", () => {
+    const { lineClears } = getInitialGameState();
+    expect(lineClears).toBe(0);
+  });
+
   it("initializes tetromino to a random tetromino index", () => {
     const { tetromino } = getInitialGameState();
     expect(Number.isInteger(tetromino)).toBeTruthy();

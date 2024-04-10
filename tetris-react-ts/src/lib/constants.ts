@@ -1,6 +1,10 @@
 export const BOARD_WIDTH = 10;
 export const BOARD_HEIGHT = 18;
 
+export const POINTS_PER_LINE_CLEAR = 10;
+
+export const LEVEL_INCREASE_LINES = 8;
+
 // Each entry in the array represents a tetromino (shape)
 // The subarrays represent rotations of the tetrominos
 // Tetrominos are shapes on a 4x4 grid
