@@ -1,6 +1,7 @@
 import canMoveTo from "./canMoveTo";
 import checkForLineClears from "./checkForLineClears";
 import getInitialGameState from "./getInitialGameState";
+import getRandomTetromino from "./getRandomTetromino";
 import placeTetromino from "./placeTetromino";
 import { GameState } from "./types";
 
@@ -20,7 +21,7 @@ const moveDown = (gameState: GameState): GameState => {
 
   // If it's not a game over, check to see if we completed any rows
   const proposedGameStateWithScore = checkForLineClears(
-    proposedGameStateWithBlock,
+    proposedGameStateWithBlock
   );
 
   // Finally, get ready to drop a new block
@@ -30,7 +31,7 @@ const moveDown = (gameState: GameState): GameState => {
     x: initialGameState.x,
     y: initialGameState.y,
     rotation: initialGameState.rotation,
-    nextTetromino: proposedGameStateWithScore.nextTetromino,
+    nextTetromino: getRandomTetromino(),
     tetromino: gameState.nextTetromino,
     score: proposedGameStateWithScore.score,
     lineClears: proposedGameStateWithScore.lineClears,
