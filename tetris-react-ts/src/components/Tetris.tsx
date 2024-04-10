@@ -2,6 +2,7 @@ import TetrisContext from "../context/TetrisContext";
 import TetrisControlsContext from "../context/TetrisControlsContext";
 import useTetris from "../hooks/useTetris";
 import Board from "./Board";
+import ControlInfo from "./ControlInfo";
 import GameInfo from "./GameInfo";
 import StatePopup from "./StatePopup";
 
@@ -22,6 +23,7 @@ const Tetris = () => {
           <GameInfo />
           <StatePopup />
         </div>
+        <ControlInfo />
       </TetrisControlsContext.Provider>
     </TetrisContext.Provider>
   );
