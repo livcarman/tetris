@@ -1,4 +1,4 @@
-import { useReducer } from "react";
+import { useCallback, useEffect, useReducer, useRef } from "react";
 
 import { GameState } from "../lib/types";
 import togglePause from "../lib/togglePause";
@@ -43,11 +43,49 @@ const tetrisReducer = (state: GameState, action: GameAction) => {
   }
 };
 
+const useFallingBricks = (gameState: GameState, moveDown: () => void) => {
+  const { level, isPaused, isGameOver } = gameState;
+  const speed = level * 1000;
+  const isRunning = !(isPaused || isGameOver);
+  const requestRef = useRef<number>();
+  const lastUpdateTimeRef = useRef(0);
+  const progressTimeRef = useRef(0);
+
+  const update = useCallback(
+    (time: number) => {
+      requestRef.current = requestAnimationFrame(update);
+      if (!isRunning) {
+        return;
+      }
+      if (!lastUpdateTimeRef.current) {
+        lastUpdateTimeRef.current = time;
+      }
+      const deltaTime = time - lastUpdateTimeRef.current;
+      progressTimeRef.current += deltaTime;
+      if (progressTimeRef.current > speed) {
+        moveDown();
+        progressTimeRef.current = 0;
+      }
+      lastUpdateTimeRef.current = time;
+    },
+    [isRunning, moveDown, speed]
+  );
+
+  useEffect(() => {
+    requestRef.current = requestAnimationFrame(update);
+    return () => {
+      requestRef.current !== undefined &&
+        cancelAnimationFrame(requestRef.current);
+    };
+  }, [isRunning, update]);
+};
+
 const useTetris = () => {
   const [state, dispatch] = useReducer(tetrisReducer, getInitialGameState());
 
   return {
     state,
+    useFallingBricks,
     togglePause: () => dispatch({ type: "togglePause" }),
     restart: () => dispatch({ type: "restart" }),
     moveLeft: () => dispatch({ type: "moveLeft" }),
