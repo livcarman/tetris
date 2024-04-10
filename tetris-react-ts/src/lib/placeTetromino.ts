@@ -1,3 +1,4 @@
+import canMoveTo from "./canMoveTo";
 import { TETROMINOS } from "./constants";
 import type { GameState } from "./types";
 
@@ -14,8 +15,10 @@ const placeTetromino = (gameState: GameState): GameState => {
       }
 
       // Try to place the tetromino on the board
-      // If part of tetromino is off-screen, then game over!
-      if (row + y < 0) {
+      // If part of tetromino is off-screen and the tetromino can't move down,
+      // then game over!
+      const canMoveDown = canMoveTo({ ...gameState, y: gameState.y + 1 });
+      if (row + y < 0 && !canMoveDown) {
         return { ...gameState, board: newBoard, isGameOver: true };
       }
 

@@ -18,7 +18,11 @@ const Tetris = () => {
   return (
     <TetrisContext.Provider value={state}>
       <TetrisControlsContext.Provider value={controls}>
-        <div className="Tetris" data-testid="Tetris">
+        <div
+          className="Tetris"
+          data-testid="Tetris"
+          ref={(div) => div && div.focus()}
+        >
           <Board />
           <GameInfo />
           <StatePopup />
