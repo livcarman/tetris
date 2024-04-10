@@ -18,7 +18,7 @@ const Controls = () => {
       </button>
       <button
         className="Controls__btn"
-        data-testid="Controls__new"
+        data-testid="Controls__restart"
         onClick={() => restart()}
       >
         Restart

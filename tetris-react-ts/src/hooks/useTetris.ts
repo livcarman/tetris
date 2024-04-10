@@ -101,7 +101,7 @@ const useFallingBricks = (gameState: GameState, moveDown: () => void) => {
       }
       lastUpdateTimeRef.current = time;
     },
-    [isRunning, moveDown, speed]
+    [isRunning, moveDown, speed],
   );
 
   useEffect(() => {
