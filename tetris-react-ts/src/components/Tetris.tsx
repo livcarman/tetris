@@ -8,8 +8,11 @@ import StatePopup from "./StatePopup";
 import "./tetris.css";
 
 const Tetris = () => {
-  const { state, useFallingBricks, ...controls } = useTetris();
+  const { state, useFallingBricks, useKeyboardControls, ...controls } =
+    useTetris();
+
   useFallingBricks(state, controls.moveDown);
+  useKeyboardControls(controls);
 
   return (
     <TetrisContext.Provider value={state}>

@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useReducer, useRef } from "react";
+import React, { useCallback, useEffect, useReducer, useRef } from "react";
 
 import { GameState } from "../lib/types";
 import togglePause from "../lib/togglePause";
@@ -41,6 +41,38 @@ const tetrisReducer = (state: GameState, action: GameAction) => {
     default:
       return state;
   }
+};
+
+const useKeyboardControls = (controls: TetrisControls) => {
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      e.stopImmediatePropagation();
+      switch (true) {
+        case e.key === "a" || e.code === "KeyA":
+        case e.key === "ArrowLeft" || e.code === "ArrowLeft":
+          return controls.moveLeft();
+        case e.key === "d" || e.code === "KeyD":
+        case e.key === "ArrowRight" || e.code === "ArrowRight":
+          return controls.moveRight();
+        case e.key === "s" || e.code === "KeyS":
+        case e.key === "ArrowDown" || e.code === "ArrowDown":
+          return controls.moveDown();
+        case e.key === "w" || e.code === "KeyW":
+        case e.key === "ArrowUp" || e.code === "ArrowUp":
+          return controls.rotate();
+        case e.key === " " || e.code === "Space":
+          return controls.togglePause();
+        default:
+          return;
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown, true);
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
 };
 
 const useFallingBricks = (gameState: GameState, moveDown: () => void) => {
@@ -86,6 +118,7 @@ const useTetris = () => {
   return {
     state,
     useFallingBricks,
+    useKeyboardControls,
     togglePause: () => dispatch({ type: "togglePause" }),
     restart: () => dispatch({ type: "restart" }),
     moveLeft: () => dispatch({ type: "moveLeft" }),
