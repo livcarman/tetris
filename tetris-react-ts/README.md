@@ -2,7 +2,7 @@
 
 This is a Tetris implementation in React with TypeScript, Yarn, and Vite.
 
-Live demo: [tetris-three-red.vercel.app](https://ttetris-three-red.vercel.app)
+Live demo: [tetris-three-red.vercel.app](https://tetris-three-red.vercel.app)
 
 ![image](https://github.com/livcarman/tetris/assets/3393352/7ef20d89-02ab-43e9-9088-c5c58eda3c98)
 
